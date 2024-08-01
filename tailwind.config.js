@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       fontFamily: { 
         'belle': ['Bellefair'],
-        'barlow': ['Barlow+Condensed'],  
+        'barlowCondensed': ['Barlow Condensed'],
+        'barlow': ['Barlow'],
       },
       colors: {
         std: {

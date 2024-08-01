@@ -1,6 +1,6 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 import { IoMdMenu } from "react-icons/io";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const navItems = [
   {
@@ -27,6 +27,7 @@ const navItems = [
 
 const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation().pathname;
 
   return (
     <div className="relative w-full h-screen">
@@ -35,7 +36,8 @@ const Index = () => {
         lg:bg-[url('/assets/home/background-home-desktop.jpg')] 
         md:bg-[url('/assets/home/background-home-tablet.jpg')] 
         bg-[url('/assets/home/background-home-mobile.jpg')] 
-        bg-no-repeat bg-center bg-fixed bg-cover"
+        bg-no-repeat bg-center bg-fixed bg-cover
+        flex flex-col"
       >
         <header className="flex flex-row items-center justify-between lg:justify-start w-full h-[96px] z-50 pl-6 md:pl-10 lg:pt-10 lg:pl-14 bg-transparent">
           <Link
@@ -52,27 +54,31 @@ const Index = () => {
           <div className="border-b border-std-c3/25 w-full z-30 translate-x-[64px] hidden lg:block"></div>
 
           <nav>
-            {/* Desktop Menu */}
-            <div className="hidden md:flex flex-row bg-white/5 backdrop-blur-lg lg:w-[830px] h-[96px] px-12 lg:px-28">
-
-              <img
+            <div
+              className={`${mobileMenuOpen ? "" : "hidden"} absolute md:relative z-50 top-0 right-0 md:flex flex-col md:flex-row bg-white/5 backdrop-blur-lg w-full md:w-fit max-w-[254px] md:max-w-none lg:w-[830px] h-full md:h-[96px] pt-28 md:pt-0 pl-8 md:px-12 lg:px-28`}
+            >
+              <div className="md:hidden absolute top-0 right-6 h-[96px] flex flex-col justify-center">
+                <img
                   src="/assets/shared/icon-close.svg"
                   alt="site logo"
-                  className="sm:hidden absolute top-6 right-6"
+                  className="cursor-pointer"
                   onClick={() => setMobileMenuOpen(false)}
                 />
+              </div>
 
-
-              <ul className="w-full h-full z-20 flex flex-row gap-9">
+              <ul className="w-full h-full z-20 flex flex-col md:flex-row gap-9">
                 {navItems.map((el) => {
                   return (
                     <Link
                       to={el.url}
                       className=""
                     >
-                      <li className="flex flex-col justify-center text-std-c3 text-base font-light font-barlow tracking-[2.75px] h-full hover:border-b-[3px] border-std-c3/50">
+                      <li
+                        className={`flex flex-col justify-center h-full text-std-c3 text-base font-light font-barlow tracking-[2.75px] border-[3px] border-transparent border-y-0 md:border-y-[3px] md:border-x-0 hover:border-r-[3px] md:hover:border-r-0 md:hover:border-b-[3px] hover:border-r-std-c3/50 md:hover:border-b-std-c3/50 ${location === el.url && "border-r-std-c3 md:border-b-std-c3 border-r-[3px] md:border-b-[3px]"
+                        }`}
+                      >
                         <div className="">
-                          <span className="font-bold mr-2 hidden lg:inline">
+                          <span className="font-bold mr-2 md:hidden lg:inline">
                             {el.id.toString().padStart(2, "0")}
                           </span>
                           {el.text.toUpperCase()}
@@ -84,55 +90,21 @@ const Index = () => {
               </ul>
             </div>
 
-
-            {/* Mobile Menu */}
-            {mobileMenuOpen && (
-              <div className="absolute z-50 top-0 right-0 md:hidden flex flex-col bg-white/5 backdrop-blur-lg h-full w-full max-w-[254px] pt-28 pl-8">
-                
-                <div className="sm:hidden absolute top-0 right-6 h-[96px] flex flex-col justify-center">
-                  <img
-                    src="/assets/shared/icon-close.svg"
-                    alt="site logo"
-                    className=""
-                    onClick={() => setMobileMenuOpen(false)}
-                  />
-
-                </div>
-                
-                <ul className="w-full h-full z-50 flex flex-col gap-8">
-                  {navItems.map((el) => {
-                    return (
-                      <Link
-                        to={el.url}
-                        className=""
-                      >
-                        <li className="flex flex-col justify-center text-std-c3 text-base font-light font-barlow tracking-[2.7px] h-full hover:border-r-[3px] border-std-c3/50">
-                          <div className="">
-                            <span className="font-bold mr-2">
-                              {el.id.toString().padStart(2, "0")}
-                            </span>
-                            {el.text.toUpperCase()}
-                          </div>
-                        </li>
-                      </Link>
-                    );
-                  })}
-                </ul>
-              </div>
-            )}
-
             {!mobileMenuOpen && (
               <img
                 src="/assets/shared/icon-hamburger.svg"
                 alt="site logo"
-                className="md:hidden mr-6"
+                className="md:hidden mr-6 cursor-pointer"
                 onClick={() => setMobileMenuOpen(true)}
               />
             )}
           </nav>
         </header>
+        
+        <div className="grow flex flex-col justify-end">
+          <Outlet />
+        </div>
 
-        <Outlet />
       </div>
     </div>
   );

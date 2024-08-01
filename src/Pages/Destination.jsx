@@ -1,12 +1,14 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom'
+
 const Destination = () => {
+ 
   return (
-    <div className="text-std-c3">
-      <div>Destination</div>
-      <div>Destination</div>
-      <div>Destination</div>
-      <div>Destination</div>
+    <div className="">
+
+
     </div>
-  );
+  )
 };
 
 export default Destination;
