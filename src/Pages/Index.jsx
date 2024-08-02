@@ -25,19 +25,23 @@ const navItems = [
   },
 ];
 
+
+const bgImages = {
+  '/': "bg-[url('/assets/home/background-home-mobile.jpg')] md:bg-[url('/assets/home/background-home-tablet.jpg')] lg:bg-[url('/assets/home/background-home-desktop.jpg')]",
+  '/destination': "bg-[url('/assets/destination/background-destination-mobile.jpg')] md:bg-[url('/assets/destination/background-destination-tablet.jpg')] lg:bg-[url('/assets/destination/background-destination-desktop.jpg')]",
+  '/crew': "bg-[url('/assets/crew/background-crew-mobile.jpg')] md:bg-[url('/assets/crew/background-crew-tablet.jpg')] lg:bg-[url('/assets/crew/background-crew-desktop.jpg')]",
+  '/technology': "bg-[url('/assets/technology/background-technology-mobile.jpg')] md:bg-[url('/assets/technology/background-technology-tablet.jpg')] lg:bg-[url('/assets/technology/background-technology-desktop.jpg')]",
+}
+
 const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  // const [locNorm, setLocNorm] = useState()
   const location = useLocation().pathname;
-
+  
   return (
     <div className="relative w-full h-screen">
       <div
-        className="w-full h-full z-10 
-        lg:bg-[url('/assets/home/background-home-desktop.jpg')] 
-        md:bg-[url('/assets/home/background-home-tablet.jpg')] 
-        bg-[url('/assets/home/background-home-mobile.jpg')] 
-        bg-no-repeat bg-center bg-fixed bg-cover
-        flex flex-col"
+        className={`w-full h-full z-10 bg-no-repeat bg-center bg-fixed bg-cover flex flex-col ${bgImages[location]}`}
       >
         <header className="flex flex-row items-center justify-between lg:justify-start w-full h-[96px] z-50 pl-6 md:pl-10 lg:pt-10 lg:pl-14 bg-transparent">
           <Link
@@ -67,11 +71,12 @@ const Index = () => {
               </div>
 
               <ul className="w-full h-full z-20 flex flex-col md:flex-row gap-9">
-                {navItems.map((el) => {
+                {navItems.map((el, ind) => {
                   return (
                     <Link
                       to={el.url}
                       className=""
+                      key={ind}
                     >
                       <li
                         className={`flex flex-col justify-center h-full text-std-c3 text-base font-light font-barlow tracking-[2.75px] border-[3px] border-transparent border-y-0 md:border-y-[3px] md:border-x-0 hover:border-r-[3px] md:hover:border-r-0 md:hover:border-b-[3px] hover:border-r-std-c3/50 md:hover:border-b-std-c3/50 ${location === el.url && "border-r-std-c3 md:border-b-std-c3 border-r-[3px] md:border-b-[3px]"
@@ -101,7 +106,7 @@ const Index = () => {
           </nav>
         </header>
         
-        <div className="grow flex flex-col justify-end">
+        <div className="grow flex flex-col lg:justify-end">
           <Outlet />
         </div>
 
