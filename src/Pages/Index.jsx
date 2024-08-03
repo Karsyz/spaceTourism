@@ -1,6 +1,6 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { IoMdMenu } from "react-icons/io";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 
 const navItems = [
   {
@@ -25,7 +25,6 @@ const navItems = [
   },
 ];
 
-
 const bgImages = {
   '/': "bg-[url('/assets/home/background-home-mobile.jpg')] md:bg-[url('/assets/home/background-home-tablet.jpg')] lg:bg-[url('/assets/home/background-home-desktop.jpg')]",
   '/destination': "bg-[url('/assets/destination/background-destination-mobile.jpg')] md:bg-[url('/assets/destination/background-destination-tablet.jpg')] lg:bg-[url('/assets/destination/background-destination-desktop.jpg')]",
@@ -34,14 +33,13 @@ const bgImages = {
 }
 
 const Index = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  // const [locNorm, setLocNorm] = useState()
   const location = useLocation().pathname;
-  
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+ 
   return (
     <div className="relative w-full h-screen">
       <div
-        className={`w-full h-full z-10 bg-no-repeat bg-center bg-fixed bg-cover flex flex-col ${bgImages[location]}`}
+        className={`w-full h-full z-10 bg-[#0B0D19] bg-no-repeat bg-center bg-fixed bg-cover flex flex-col ${bgImages[location]}`}
       >
         <header className="flex flex-row items-center justify-between lg:justify-start w-full h-[96px] z-50 pl-6 md:pl-10 lg:pt-10 lg:pl-14 bg-transparent">
           <Link
@@ -59,7 +57,9 @@ const Index = () => {
 
           <nav>
             <div
-              className={`${mobileMenuOpen ? "" : "hidden"} absolute md:relative z-50 top-0 right-0 md:flex flex-col md:flex-row bg-white/5 backdrop-blur-lg w-full md:w-fit max-w-[254px] md:max-w-none lg:w-[830px] h-full md:h-[96px] pt-28 md:pt-0 pl-8 md:px-12 lg:px-28`}
+              className={`${
+                mobileMenuOpen ? "" : "hidden"
+              } absolute md:relative z-50 top-0 right-0 md:flex flex-col md:flex-row bg-white/5 backdrop-blur-lg w-full md:w-fit max-w-[254px] md:max-w-none lg:w-[830px] h-full md:h-[96px] pt-28 md:pt-0 pl-8 md:px-12 lg:px-28`}
             >
               <div className="md:hidden absolute top-0 right-6 h-[96px] flex flex-col justify-center">
                 <img
@@ -79,7 +79,9 @@ const Index = () => {
                       key={ind}
                     >
                       <li
-                        className={`flex flex-col justify-center h-full text-std-c3 text-base font-light font-barlow tracking-[2.75px] border-[3px] border-transparent border-y-0 md:border-y-[3px] md:border-x-0 hover:border-r-[3px] md:hover:border-r-0 md:hover:border-b-[3px] hover:border-r-std-c3/50 md:hover:border-b-std-c3/50 ${location === el.url && "border-r-std-c3 md:border-b-std-c3 border-r-[3px] md:border-b-[3px]"
+                        className={`flex flex-col justify-center h-full text-std-c3 text-base font-light font-barlow tracking-[2.75px] border-[3px] border-transparent border-y-0 md:border-y-[3px] md:border-x-0 hover:border-r-[3px] md:hover:border-r-0 md:hover:border-b-[3px] hover:border-r-std-c3/50 md:hover:border-b-std-c3/50 ${
+                          location === el.url &&
+                          "border-r-std-c3 md:border-b-std-c3 border-r-[3px] md:border-b-[3px]"
                         }`}
                       >
                         <div className="">
@@ -105,11 +107,10 @@ const Index = () => {
             )}
           </nav>
         </header>
-        
+
         <div className="grow flex flex-col lg:justify-end">
           <Outlet />
         </div>
-
       </div>
     </div>
   );
