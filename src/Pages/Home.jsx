@@ -4,10 +4,9 @@ import { HashLink } from "react-router-hash-link";
 
 const Home = () => {
   return (
-    <div className="flex flex-col justify-end items-center w-full mt-4 md:mt-[106px] lg:mt-0">
-      
-      <div className="flex flex-col items-center lg:flex-row h-full lg:justify-between lg:px-[165px] lg:pb-[131px] w-full lg:max-w-[1440px]">
-        
+    <div className="flex flex-col justify-end items-center w-full mt-4 md:mt-[106px] lg:pb-[131px] lg:mt-0">
+      <div className="flex flex-col items-center lg:flex-row h-full lg:justify-between lg:gap-16 lg:px-[165px] w-full lg:max-w-[1440px]">
+
         <div className="flex flex-col items-center gap-4 md:gap-6 lg:self-end">
           <span className="text-std-c2 font-barlowCondensed text-base md:text-2xl lg:text-3xl tracking-[2.7px] md:tracking-[3.38px] lg:tracking-[4.72px]">
             SO, YOU WANT TO TRAVEL TO
@@ -23,18 +22,20 @@ const Home = () => {
           </p>
         </div>
 
-        <Link to={"/destination"} className="mt-[81px] md:mt-[156px] lg:mt-0">
+        <Link
+          to={"/destination"}
+          className="mt-[81px] md:mt-[156px] lg:mt-0 lg:self-end"
+        >
+          <div className="relative w-[150px] h-[150px] md:w-[220px] md:h-[220px] lg:w-[274px] lg:h-[274px]">
+            <div className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] mx-auto z-10 bg-transparent hover:bg-white/5 hover:backdrop-blur-lg rounded-full w-[220px] h-[220px] lg:w-[450px] lg:h-[450px] font-belle tracking-[2px] text-[2rem] ease duration-150 scale-[62%] hover:scale-100"></div>
 
-          <div className="bg-transparent hover:bg-white/5 hover:backdrop-blur-lg rounded-full w-[220px] h-[220px] lg:w-[450px] lg:h-[450px] font-belle tracking-[2px] text-[2rem] flex justify-center items-center lg:translate-y-[88px] ease duration-150">
+            <div className="absolute z-20 top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-std-c3 rounded-full w-[150px] h-[150px] md:w-[220px] md:h-[220px] lg:w-[274px] lg:h-[274px] flex justify-center items-center pointer-events-none">
 
-            <div className="bg-std-c3 rounded-full w-[150px] h-[150px] md:w-[220px] md:h-[220px] lg:w-[274px] lg:h-[274px] font-belle tracking-[1.25px] md:tracking-[2px] leading-[23px] md:leading-[37px] text-xl md:text-[32px] flex justify-center items-center">
-              EXPLORE
+              <span className="font-belle tracking-[1.25px] md:tracking-[2px] leading-[23px] md:leading-[37px] text-xl md:text-[32px]">EXPLORE</span>
             </div>
 
           </div>
-
         </Link>
-
       </div>
     </div>
   );
