@@ -39,7 +39,7 @@ const destData = {
 const Destination = () => {
   const [destination, setDestination] = useState("moon");
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center lg:px-10">
       <div className="flex flex-col lg:flex-row lg:justify-center items-center lg:items-end gap-[26px] md:gap-[53px] lg:gap-[157px] w-full max-w-[1440px] pb-[58px] md:pb-[62px] lg:pb-[112px] md:mt-[40px] md:px-[38.5px] lg:px-0">
         {/* left */}
         <div className="flex flex-col items-center lg:items-start">
