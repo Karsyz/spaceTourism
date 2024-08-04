@@ -38,14 +38,13 @@ const destData = {
 
 const Destination = () => {
   const [destination, setDestination] = useState("moon");
-  // console.log(destData[destination])
   return (
-    <div className="flex justify-center w-full">
-      <div className="flex justify-center gap-[157px] w-full max-w-[1440px] pb-[112px]">
+    <div className="flex justify-center">
+      <div className="flex flex-col lg:flex-row lg:justify-center items-center lg:items-end gap-[26px] md:gap-[53px] lg:gap-[157px] w-full max-w-[1440px] pb-[58px] md:pb-[62px] lg:pb-[112px] md:mt-[40px] md:px-[38.5px] lg:px-0">
         {/* left */}
-        <div className="">
-          <h4 className="text-std-c3 font-barlowCondensed text-base md:text-2xl lg:text-[28px] tracking-[2.7px] md:tracking-[3.38px] lg:tracking-[4.72px] pb-[97px] leading-8 lg:-translate-x-[63.5px]">
-            <span className="text-std-c3/25 font-bold mr-7 md:hidden lg:inline">
+        <div className="flex flex-col items-center lg:items-start">
+          <h4 className="self-auto md:self-start lg:self-auto text-std-c3 font-barlowCondensed text-base md:text-2xl lg:text-[28px] tracking-[2.7px] md:tracking-[3.38px] lg:tracking-[4.72px] pb-8 md:pb-[60px] lg:pb-[97px] leading-8 whitespace-nowrap">
+            <span className="text-std-c3/25 font-bold mr-[18px] md:mr-[19px] lg:inline">
               01
             </span>
             PICK YOUR DESTINATION
@@ -54,19 +53,20 @@ const Destination = () => {
           <img
             src={destData[destination].imgSrc}
             alt={`Picture of ${destData[destination].imgAlt}`}
+            className="w-[170px] md:w-[300px] lg:w-auto lg:ml-[63.5px]"
           />
         </div>
 
         {/* right */}
-        <div className="flex flex-col items-center lg:items-start lg:self-end min-w-[445px]">
-          <ul className="w-full h-full z-20 flex flex-col items-start md:flex-row gap-9 mb-[37px]">
+        <div className="flex flex-col items-center lg:items-start lg:self-end">
+          <ul className="w-full flex flex-row justify-center lg:justify-start gap-9 mb-[37px] md:mb-[32px]">
             {Object.keys(destData).map((el, ind) => {
               return (
                 <li
                   key={ind}
-                  className={`text-std-c2 font-barlowCondensed text-base md:text-2xl lg:text-base tracking-[2.7px] md:tracking-[3.38px] lg:tracking-[4.72px] cursor-pointer h-[34px] border-transparent border-y-0 md:border-y-[3px] md:border-x-0 hover:border-r-[3px] md:hover:border-r-0 md:hover:border-b-[3px] hover:border-r-std-c3/50 md:hover:border-b-std-c3/50 ${
+                  className={`h-[28px] md:h-[34px] text-std-c2 font-barlowCondensed text-[0.875rem] md:text-base tracking-[2.7px] lg:tracking-[4.72px] cursor-pointer lg:h-[34px] border-transparent border-x-0 border-b-[3px] hover:border-b-std-c3/50 ${
                     destination === destData[el].title.toLowerCase() &&
-                    "border-r-std-c3 md:border-b-std-c3 border-r-[3px] md:border-b-[3px]"
+                    "border-b-std-c3 text-std-c3"
                   }`}
                   onClick={() =>
                     setDestination(destData[el].title.toLowerCase())
@@ -78,30 +78,30 @@ const Destination = () => {
             })}
           </ul>
 
-          <h1 className="font-belle text-[100px] leading-[115px] text-std-c3 mb-[14px]">
+          <h1 className="font-belle text-[56px] leading-[64px] md:text-[80px] md:leading-[92px] lg:text-[100px] lg:leading-[115px] text-std-c3 md:mb-[8px] lg:mb-[14px]">
             {destData[destination].title}
           </h1>
-          <p className="font-barlow text-[0.9375rem] md:text-lg max-w-[327px] md:max-w-[445px] text-std-c2 leading-[1.5625rem] md:leading-7 lg:leading-8 font-light text-center lg:text-left mb-[54px]">
+          <p className="font-barlow text-[0.9375rem] md:text-lg w-[327px] md:w-[573px] lg:w-[445px]  text-std-c2 leading-[1.5625rem] md:leading-7 lg:leading-8 font-light text-center lg:text-left mb-[32px] md:mb-[49px] lg:mb-[54px]">
             {destData[destination].desc}
           </p>
 
           {/* horizontal line */}
-          <div className="border-[1px] border-b border-std-c3/25 w-full z-30 block mb-[28px]" />
+          <div className="border-[1px] border-b border-std-c3/25 max-w-[327px] md:max-w-[573px] lg:max-w-[445px] w-full z-30 block mb-[28px]" />
 
-          <div className="flex gap-[68px]">
-            <div className="flex flex-col gap-3">
-              <h4 className="text-std-c2 font-barlowCondensed text-[14px] tracking-[2.36px] leading-4">
+          <div className="flex flex-col md:flex-row gap-[32px] md:gap-[11px] lg:gap-[68px] ">
+            <div className="flex flex-col gap-3 md:w-[216px] lg:w-auto">
+              <h4 className="text-std-c2 font-barlowCondensed text-[14px] tracking-[2.36px] leading-4 text-center lg:text-left">
                 AVG. DISTANCE
               </h4>
-              <span className="font-belle text-2xl text-std-c3 ">
+              <span className="font-belle text-2xl text-std-c3 text-center lg:text-left">
                 {destData[destination].dist}
               </span>
             </div>
-            <div className="flex flex-col gap-3">
-              <h4 className="text-std-c2 font-barlowCondensed text-[14px] tracking-[2.36px] leading-4">
+            <div className="flex flex-col gap-3 md:w-[216px] lg:w-auto">
+              <h4 className="text-std-c2 font-barlowCondensed text-[14px] tracking-[2.36px] leading-4 text-center lg:text-left">
                 AVG. DISTANCE
               </h4>
-              <span className="font-belle text-2xl text-std-c3 ">
+              <span className="font-belle text-2xl text-std-c3 text-center lg:text-left">
                 {destData[destination].dist}
               </span>
             </div>

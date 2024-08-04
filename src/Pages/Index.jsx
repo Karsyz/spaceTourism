@@ -37,7 +37,13 @@ const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
  
   return (
-    <div className="relative w-full h-screen">
+    // ${location === '/' && 'h-screen md:h-auto'}
+    <div className={`relative w-full 
+      ${location === '/' && 'h-screen md:h-screen lg:h-screen'}
+      ${location === '/destination' && 'h-auto md:h-auto lg:h-screen'} 
+      ${location === '/crew' && 'h-screen md:h-screen lg:h-screen'} 
+      ${location === '/technology' && 'h-screen md:h-screen lg:h-screen'} 
+      `}> 
       <div
         className={`w-full h-full z-10 bg-[#0B0D19] bg-no-repeat bg-center bg-fixed bg-cover flex flex-col ${bgImages[location]}`}
       >
@@ -79,7 +85,9 @@ const Index = () => {
                       key={ind}
                     >
                       <li
-                        className={`flex flex-col justify-center h-full text-std-c3 text-base font-light font-barlow tracking-[2.75px] border-[3px] border-transparent border-y-0 md:border-y-[3px] md:border-x-0 hover:border-r-[3px] md:hover:border-r-0 md:hover:border-b-[3px] hover:border-r-std-c3/50 md:hover:border-b-std-c3/50 ${
+                        className={`flex flex-col justify-center h-full text-std-c3 text-base md:text-[0.875rem] font-light font-barlowCondensed tracking-[2.75px] md:tracking-[2.38px]
+                          
+                          border-[3px] border-transparent border-y-0 md:border-y-[3px] md:border-x-0 hover:border-r-[3px] md:hover:border-r-0 md:hover:border-b-[3px] hover:border-r-std-c3/50 md:hover:border-b-std-c3/50 ${
                           location === el.url &&
                           "border-r-std-c3 md:border-b-std-c3 border-r-[3px] md:border-b-[3px]"
                         }`}
