@@ -40,7 +40,7 @@ const Index = () => {
     // ${location === '/' && 'h-screen md:h-auto'}
     <div className={`relative w-full 
       ${location === '/' && 'h-screen md:h-screen lg:h-screen'}
-      ${location === '/destination' && 'h-auto md:h-auto lg:h-screen'} 
+      ${location === '/destination' && 'h-screen md:h-auto lg:h-screen'} 
       ${location === '/crew' && 'h-screen md:h-screen lg:h-screen'} 
       ${location === '/technology' && 'h-screen md:h-screen lg:h-screen'} 
       `}> 
@@ -85,7 +85,7 @@ const Index = () => {
                       key={ind}
                     >
                       <li
-                        className={`flex flex-col justify-center h-full text-std-c3 text-base md:text-[0.875rem] font-light font-barlowCondensed tracking-[2.75px] md:tracking-[2.38px]
+                        className={`flex flex-col justify-center h-full text-std-c3 text-base md:text-[0.875rem] lg:text-base font-light font-barlowCondensed tracking-[2.75px] md:tracking-[2.38px]
                           
                           border-[3px] border-transparent border-y-0 md:border-y-[3px] md:border-x-0 hover:border-r-[3px] md:hover:border-r-0 md:hover:border-b-[3px] hover:border-r-std-c3/50 md:hover:border-b-std-c3/50 ${
                           location === el.url &&
@@ -116,7 +116,7 @@ const Index = () => {
           </nav>
         </header>
 
-        <div className="grow flex flex-col lg:justify-end">
+        <div className="grow flex flex-col lg:justify-end ease transition-opacity">
           <Outlet />
         </div>
       </div>
