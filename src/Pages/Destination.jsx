@@ -39,11 +39,15 @@ const destData = {
 const Destination = () => {
   const [destination, setDestination] = useState("moon");
   return (
-    <div className="flex justify-center lg:px-10">
-      <div className="flex flex-col lg:flex-row lg:justify-center items-center lg:items-end gap-[26px] md:gap-[53px] lg:gap-[157px] w-full max-w-[1440px] pb-[58px] md:pb-[62px] lg:pb-[112px] md:mt-[40px] md:px-[38.5px] lg:px-0">
+    <div className="flex flex-col justify-start sm:justify-center h-screen items-center w-full ease transition-opacity lg:px-10 pt-16">
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-[26px] md:gap-[53px] lg:gap-[157px] w-full max-w-[1440px] pb-10">
         {/* left */}
-        <div className="flex flex-col items-center lg:items-start">
-          <h4 className="self-auto md:self-start lg:self-auto text-std-c3 font-barlowCondensed text-base md:text-2xl lg:text-[28px] tracking-[2.7px] md:tracking-[3.38px] lg:tracking-[4.72px] pb-8 md:pb-[60px] lg:pb-[97px] leading-8 whitespace-nowrap">
+        <div className="flex flex-col items-center lg:items-start pt-10">
+          <h4
+            className="self-auto md:self-start lg:self-auto text-std-c3
+           font-barlowCondensed text-base md:text-2xl lg:text-[28px] tracking-[2.7px] 
+           md:tracking-[3.38px] lg:tracking-[4.72px] leading-8 whitespace-nowrap mb-10"
+          >
             <span className="text-std-c3/25 font-bold mr-[18px] md:mr-[19px] lg:inline">
               01
             </span>

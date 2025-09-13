@@ -6,5 +6,6 @@
   "bracketSpacing": true,
   "bracketSameLine": false,
   "printWidth": 80,
+  "proseWrap": "always",
   "singleAttributePerLine": true
 }
