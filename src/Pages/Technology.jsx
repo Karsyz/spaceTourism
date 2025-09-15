@@ -35,20 +35,20 @@ const Technology = () => {
         <span className="text-std-c3/25 font-bold mr-[18px] md:mr-[19px]">
           03
         </span>
-        SPACE LAUNCH 101...
+        SPACE LAUNCH 101
       </h4>
 
-      <div className="flex flex-col-reverse grow md:flex-col lg:flex-row lg:justify-center items-center lg:items-stretch gap-[26px] md:gap-0 lg:gap-[20px] w-full max-w-[1440px] md:mt-0 md:px-[38.5px] lg:px-0 lg:mt-52">
+      <div className="flex flex-col-reverse lg:flex-row lg:justify-center items-center lg:items-stretch gap-[26px] md:gap-0 lg:gap-[20px] w-full max-w-[1440px] md:mt-0 lg:px-0 lg:mt-52">
         {/* left */}
         <div className="flex flex-col justify-between lg:min-w-[620px] lg:pb-24">
           <h4 className="hidden lg:block text-std-c3 font-barlowCondensed text-base text-[28px] tracking-[4.72px] leading-8 whitespace-nowrap ">
             <span className="text-std-c3/25 font-bold mr-[18px] md:mr-[19px]">
               03
             </span>
-            SPACE LAUNCH 101...
+            SPACE LAUNCH 101
           </h4>
           <div className="text-center font-belle ">
-            <h2 className="lg:text-left text-std-c3/50 text-base md:text-2xl lg:text-[32px] sm:pb-8 md:pb-2 lg:pb-[15px] whitespace-nowrap">
+            <h2 className="lg:text-left text-std-c2 text-[14px] md:text-2xl lg:text-[32px] sm:pb-8 md:pb-2 lg:pb-[15px] whitespace-nowrap">
               THE TERMNIOLOGY...
             </h2>
 
@@ -61,29 +61,35 @@ const Technology = () => {
             </p>
           </div>
 
-          <ul className="order-first md:order-last w-full flex flex-row justify-center lg:justify-start gap-4 lg:gap-6 mb-[37px] md:mb-[40px] lg:mb-0">
+          <ul className="order-first w-full flex flex-row justify-center lg:justify-start gap-4 lg:gap-6 mb-[37px] md:mb-[40px] lg:mb-0">
             {Object.keys(techData).map((el, ind) => {
               return (
                 <li
                   key={ind}
-                  className={`h-[40px] w-[40px] lg:h-[15px] lg:w-[15px] rounded-full cursor-pointer text-black  hover:bg-std-c3/50 ${techType === el ? "bg-std-c3" : "bg-std-c3/[0.17]"}`}
+                  className={`flex justify-center items-center h-[40px] md:h-[60px] md:w-[60px] w-[40px] lg:h-[15px] lg:w-[15px] rounded-full cursor-pointer hover:border-white font-belle text-base md:mt-14 ${techType === el ? "bg-std-c3 text-black" : "bg-transparent border-[1px] border-white/25 text-white hover:bg-transparent"}`}
                   onClick={() => setTechType(el)}
-                >{el.num}</li>
+                >
+                  {techData[el].num}
+                </li>
               );
             })}
           </ul>
         </div>
 
         {/* right */}
-        <div className="flex flex-col items-center lg:items-start lg:min-w-[575px]">
+        <picture className="flex flex-col justify-center items-center lg:items-start lg:min-w-[575px]">
+          <source
+            media="(min-width: 1024px)"
+            srcset={techData[techType].imgPort}
+          />
           <img
-            src={techData[techType].imgSrc}
+            src={techData[techType].imgLand}
             alt={`Picture of ${techData[techType].imgAlt}`}
-            className="h-[223px] md:h-[532px] lg:h-full lg:w-auto"
+            className="h-[170px] md:h-[310px] lg:w-[515px] lg:h-[527px]  object-contain"
           />
           {/* horizontal line */}
-          <div className="block md:hidden lg:hidden border-[1px] border-b border-std-c3/25 min-w-[327px] md:max-w-[573px] lg:max-w-[445px] w-full z-30" />
-        </div>
+          <div className="hidden md:hidden lg:hidden border-[1px] border-b border-std-c3/25 min-w-[327px] md:max-w-[573px] lg:max-w-[445px] w-full z-30" />
+        </picture>
       </div>
     </div>
   );
