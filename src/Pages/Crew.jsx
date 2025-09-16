@@ -38,53 +38,56 @@ const Crew = () => {
         MEET YOUR CREW
       </h4>
 
-      <div className="flex flex-col-reverse grow md:flex-col lg:flex-row lg:justify-center items-center lg:items-stretch gap-[26px] md:gap-0 lg:gap-[20px] w-full max-w-[1440px] md:mt-0 md:px-[38.5px] lg:px-0 lg:mt-52">
-        
+      <div className="flex flex-col-reverse grow md:flex-col lg:flex-row lg:justify-center items- lg:items-start gap-[26px] md:gap-0 lg:gap-[20px] w-full max-w-[1440px] md:mt-0 md:px-[38.5px] lg:px-0 lg:mt-52">
         {/* left */}
-        <div className="flex flex-col justify-between  lg:pb-24">
-          <h4 className="hidden lg:block text-std-c3 font-barlowCondensed text-base text-[28px] tracking-[4.72px] leading-8 whitespace-nowrap ">
-            <span className="text-std-c3/25 font-bold mr-[18px] md:mr-[19px]">
-              02
-            </span>
-            MEET YOUR CREW
-          </h4>
+        <div className="flex justify-center lg:justify-start self-stretch lg:min-w-[500px]">
+          <div className="flex flex-col justify-between h-full lg:pb-24">
+            <h4 className="hidden lg:block text-std-c3 font-barlowCondensed text-base lg:text-[28px] tracking-[4.72px] leading-8 whitespace-nowrap">
+              <span className="text-std-c3/25 font-bold mr-[18px] md:mr-[19px]">
+                02
+              </span>
+              MEET YOUR CREW
+            </h4>
 
-          <div className="text-center font-belle ">
-            <h2 className="lg:text-left text-std-c3/50 text-base md:text-2xl lg:text-[32px] sm:pb-8 md:pb-2 lg:pb-[15px] whitespace-nowrap">
-              {crewMember.toUpperCase()}
-            </h2>
+            <div className="flex flex-col items-center lg:items-start font-belle">
+              <h2 className="lg:text-left text-std-c3/50 text-base md:text-2xl lg:text-[32px] sm:pb-8 md:pb-2 lg:pb-[15px] whitespace-nowrap">
+                {crewMember.toUpperCase()}
+              </h2>
 
-            <h1 className="text-2xl md:text-[40px] sm:leading-[64px] lg:text-left text-std-c3 mb-4 md:mb-2 lg:mb-[27px]">
-              {crewData[crewMember].name.toUpperCase()}
-            </h1>
+              <h1 className="text-2xl md:text-[40px] sm:leading-[64px] lg:text-left text-std-c3 mb-4 md:mb-2 lg:mb-[27px]">
+                {crewData[crewMember].name.toUpperCase()}
+              </h1>
 
-            <p className="font-barlow text-[0.9375rem] md:text-[1rem] w-[327px] md:w-[458px] lg:w-[445px]  text-std-c2 leading-[1.5625rem] md:leading-7 lg:leading-8 font-light text-center lg:text-left mb-[32px] md:mb-[40px]">
-              {crewData[crewMember].desc}
-            </p>
+              <p className="font-barlow text-[0.9375rem] md:text-[1rem] w-[327px] md:w-[458px] lg:w-[445px]  text-std-c2 leading-[1.5625rem] md:leading-7 lg:leading-8 font-light text-center lg:text-left mb-[32px] md:mb-[40px]">
+                {crewData[crewMember].desc}
+              </p>
+            </div>
+
+            <ul className="order-first md:order-last w-full flex flex-row justify-center lg:justify-start gap-4 lg:gap-6 mb-[37px] md:mb-[40px] lg:mb-0">
+              {Object.keys(crewData).map((el, ind) => {
+                return (
+                  <li
+                    key={ind}
+                    className={`h-[10px] w-[10px] lg:h-[15px] lg:w-[15px] rounded-full cursor-pointer  hover:bg-std-c3/50 ${crewMember === el ? "bg-std-c3" : "bg-std-c3/[0.17]"}`}
+                    onClick={() => setCrewMember(el)}
+                  ></li>
+                );
+              })}
+            </ul>
           </div>
-
-          <ul className="order-first md:order-last w-full flex flex-row justify-center lg:justify-start gap-4 lg:gap-6 mb-[37px] md:mb-[40px] lg:mb-0">
-            {Object.keys(crewData).map((el, ind) => {
-              return (
-                <li
-                  key={ind}
-                  className={`h-[10px] w-[10px] lg:h-[15px] lg:w-[15px] rounded-full cursor-pointer  hover:bg-std-c3/50 ${crewMember === el ? "bg-std-c3" : "bg-std-c3/[0.17]"}`}
-                  onClick={() => setCrewMember(el)}
-                ></li>
-              );
-            })}
-          </ul>
         </div>
 
         {/* right */}
-        <div className="flex flex-col items-center lg:items-start lg:min-w-[575px]">
-          <img
-            src={crewData[crewMember].imgSrc}
-            alt={`Picture of ${crewData[crewMember].imgAlt}`}
-            className="h-[223px] md:h-[532px] lg:h-full"
-          />
-          {/* horizontal line */}
-          <div className="block md:hidden lg:hidden border-[1px] border-b border-std-c3/25 min-w-[327px] md:max-w-[573px] lg:max-w-[445px] w-full z-30" />
+        <div className="flex flex-row justify-center self-stretch lg:min-w-[700px]">
+          <div className="self-end flex flex-col">
+            <img
+              src={crewData[crewMember].imgSrc}
+              alt={`Picture of ${crewData[crewMember].imgAlt}`}
+              className="h-[223px]  md:h-[532px] lg:h-[700px] object-contain"
+            />
+            {/* horizontal line */}
+            <div className="block md:hidden lg:hidden border-[1px] border-b border-std-c3/25 min-w-[327px] md:max-w-[573px] lg:max-w-[445px] w-full z-30" />
+          </div>
         </div>
       </div>
     </div>
